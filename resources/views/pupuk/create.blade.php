@@ -48,9 +48,6 @@
             <label for="deskripsi" class="form-label">Deskripsi</label>
             <textarea name="deskripsi" class="form-control" rows="3" required></textarea>
         </div>
-
-
-        <button type="submit" class="btn btn-success">Simpan</button>
         <form action="{{ route('pupuk.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     {{-- ... input lainnya --}}

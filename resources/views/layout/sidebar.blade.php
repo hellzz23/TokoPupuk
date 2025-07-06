@@ -2,7 +2,7 @@
 <div class="sidebar pe-4 pb-3" style="background: linear-gradient(to bottom, #a5d6a7, #e8f5e9);">
     <nav class="navbar navbar-light">
         <a href="{{ route('dashboard') }}" class="navbar-brand mx-4 mb-3 d-flex align-items-center">
-            <img src="{{ asset('assets/img/leaf.png') }}" alt="Logo" style="width: 30px; height: 30px;" class="me-2">
+            <img src="{{ asset('assets/img/leaf.jpg') }}" alt="Logo" style="width: 30px; height: 30px;" class="me-2">
             <h4 class="text-success mb-0 fw-bold">Toko Pupuk</h4>
         </a>
 
