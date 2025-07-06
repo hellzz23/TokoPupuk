@@ -30,6 +30,9 @@ Route::get('/about', function () {
     return view('about');
 })->name('about')->middleware('auth');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about')->middleware('auth');
 Route::get('/about', [AboutController::class, 'index'])->name('about')->middleware('auth');
 
 Route::get('/pesan/{id}', [PesananController::class, 'create'])->name('pesanan.create')->middleware('auth');
