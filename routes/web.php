@@ -29,4 +29,8 @@ Route::get('/riwayat', [PesananController::class, 'riwayat'])->name('riwayat.pes
 Route::get('/about', function () {
     return view('about');
 })->name('about')->middleware('auth');
+
 Route::get('/about', [AboutController::class, 'index'])->name('about')->middleware('auth');
+
+Route::get('/pesan/{id}', [PesananController::class, 'create'])->name('pesanan.create')->middleware('auth');
+Route::post('/pesan/{id}', [PesananController::class, 'store'])->name('pesanan.store')->middleware('auth');
