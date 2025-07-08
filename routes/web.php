@@ -9,7 +9,8 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
+
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 
