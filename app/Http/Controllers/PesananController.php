@@ -53,10 +53,15 @@ class PesananController extends Controller
 
         return view('pesanan.riwayat', compact('pesanan'));
     }
-    public function admin()
+  public function admin()
 {
+    if (Auth::user()->role !== 'admin') {
+        return redirect()->route('dashboard')->with('error', 'Kamu tidak punya akses ke halaman ini.');
+    }
+
     $semuaPesanan = \App\Models\Pesanan::with('pupuk', 'user')->latest()->get();
     return view('pesanan.admin_index', compact('semuaPesanan'));
 }
+
 
 }

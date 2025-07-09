@@ -37,4 +37,5 @@ Route::get('/riwayat', [PesananController::class, 'riwayat'])->name('riwayat.pes
 Route::get('/about', function () {
     return view('about');
 })->name('about')->middleware('auth');
+
 Route::get('/about', [AboutController::class, 'index'])->name('about')->middleware('auth');

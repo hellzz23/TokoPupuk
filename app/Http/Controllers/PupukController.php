@@ -9,7 +9,6 @@ class PupukController extends Controller
 {
     public function index(Request $request)
     {
-        // Jika ada keyword pencarian, filter berdasarkan nama pupuk
         $query = Pupuk::query();
 
         if ($request->has('search') && $request->search != '') {
@@ -27,11 +26,19 @@ class PupukController extends Controller
 
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Akses ditolak.');
+        }
+
         return view('pupuk.create');
     }
 
     public function store(Request $request)
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Akses ditolak.');
+        }
+
         $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
@@ -60,12 +67,20 @@ class PupukController extends Controller
 
     public function edit($id)
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Akses ditolak.');
+        }
+
         $pupuk = Pupuk::findOrFail($id);
         return view('pupuk.edit', compact('pupuk'));
     }
 
     public function update(Request $request, $id)
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Akses ditolak.');
+        }
+
         $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
@@ -96,6 +111,10 @@ class PupukController extends Controller
 
     public function destroy($id)
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard')->with('error', 'Akses ditolak.');
+        }
+
         $pupuk = Pupuk::findOrFail($id);
 
         if ($pupuk->foto && file_exists(public_path('assets/img/' . $pupuk->foto))) {
